@@ -1,7 +1,9 @@
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div className="min-h-screen flex min-w-screen justify-center">
+      Login
+    </div>
   )
 }
 
