@@ -1,30 +1,44 @@
-import React, { useState } from 'react';
+import { useState, KeyboardEvent, ChangeEvent } from 'react';
 import './chat_bot_style.css';
 import axios from 'axios';
 
-function App() {
+interface Message {
+  text: string;
+  sender: 'user' | 'bot';
+}
+
+const App = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
 
   const togglePopup = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    const newMessages = [...messages, { text: input, sender: 'user' }];
+    const newMessages: Message[] = [...messages, { text: input, sender: 'user' }];
     setMessages(newMessages);
     setInput('');
 
     try {
       const res = await axios.post('http://localhost:5000/chat', { message: input });
       const botReply = res.data.reply;
-
       setMessages([...newMessages, { text: botReply, sender: 'bot' }]);
     } catch (error) {
       setMessages([...newMessages, { text: 'Error from Gemini API', sender: 'bot' }]);
+    }
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      sendMessage();
     }
   };
 
@@ -40,19 +54,16 @@ function App() {
           <button className="close-btn" onClick={togglePopup}>×</button>
         </div>
         <div className="chat-header">
-          <div>
-            <button className="clear-btn" onClick={() => setMessages([])}>🧹</button>
-          </div>
+          <button className="clear-btn" onClick={() => setMessages([])}>🧹</button>
         </div>
 
-        {/* INPUT BAR ON TOP */}
         <div className="chat-input">
           <input
             type="text"
             placeholder="Ask something..."
             value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
           />
           <button onClick={sendMessage}>Send</button>
         </div>
@@ -67,6 +78,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
