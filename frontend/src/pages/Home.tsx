@@ -1,8 +1,22 @@
+// Home.tsx
+import { FC } from "react";
+import { Feed } from "../components/ui/Feed";
+import  AuthCard  from "../components/ui/AuthCard";
 
-const Home = () => {
+const Home: FC = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <div className="min-h-screen min-w-screen bg-black text-white flex items-start p-6 gap-6">
+      {/* Feed section */}
+      <div className="w-2/3 bg-neutral-900 rounded-xl p-6 h-[90vh] overflow-y-auto">
+        <Feed />
+      </div>
 
-export default Home
+      {/* Signup/Login section */}
+      <div className="w-1/3 bg-neutral-900 rounded-xl p-6 flex flex-col items-center h-fit">
+        <AuthCard/>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
