@@ -12,7 +12,7 @@ const Home: FC = () => {
       </div>
 
       {/* Signup/Login section */}
-      <div className="w-1/3 bg-neutral-900 rounded-xl p-6 flex flex-col items-center h-fit">
+      <div className="w-1/3 bg-neutral-900 rounded-xl p-6 flex flex-col items-center h-screen m-2 justify-center">
         <AuthCard/>
       </div>
     </div>
