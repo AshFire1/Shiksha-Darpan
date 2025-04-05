@@ -1,14 +1,6 @@
 import { Feed } from "../components/ui/Feed";
 import AuthCard from "../components/ui/AuthCard";
-
-import App from "../components/ai/chat_bot.jsx";
-// import App 
-
-// const Home = ()=>{
-//     return(
-//         <App/>
-//     );
-// }
+import App from "../components/ai/chat_bot.jsx"; // Chatbot component
 
 const Home = () => {
   return (
@@ -41,6 +33,11 @@ const Home = () => {
         <div className="w-full md:w-1/3 bg-[#1e1933] p-6 rounded-2xl flex items-center justify-center shadow-xl">
           <AuthCard />
         </div>
+      </div>
+
+      {/* Chatbot App - fixed to bottom left */}
+      <div className="z-50">
+        <App />
       </div>
     </div>
   );
