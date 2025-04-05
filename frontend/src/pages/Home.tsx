@@ -1,6 +1,15 @@
 import { Feed } from "../components/ui/Feed";
 import AuthCard from "../components/ui/AuthCard";
 
+import App from "../components/ai/chat_bot.jsx";
+// import App 
+
+// const Home = ()=>{
+//     return(
+//         <App/>
+//     );
+// }
+
 const Home = () => {
   return (
     <div className="relative min-h-screen min-w-screen w-full bg-[#34265B] text-white flex flex-col overflow-x-hidden">
