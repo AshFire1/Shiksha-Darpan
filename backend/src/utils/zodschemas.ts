@@ -1,7 +1,10 @@
 import { z } from "zod"
+import { PrismaClient } from "@prisma/client";
 
-const signUpSchema = z.object({
-    email: z
+const prismaClient=new PrismaClient();
+export const Student= prismaClient.student;
+export const signUpSchema = z.object({
+    username: z
     .string()
     .email()
     .min(5)
@@ -21,8 +24,8 @@ const signUpSchema = z.object({
     
 })
 
-const signInSchema = z.object({
-    email: z
+export const signInSchema = z.object({
+    username: z
     .string()
     .email()
     .min(5)
