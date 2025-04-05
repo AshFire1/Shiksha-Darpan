@@ -80,7 +80,6 @@ export const Feed: FC = () => {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">Explore Opportunities</h2>
       <div className="flex flex-col gap-4">
         {posts.map((post, idx) => (
           <FeedPostCard key={idx} {...post} />
