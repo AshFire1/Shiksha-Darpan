@@ -9,7 +9,7 @@ export default function ProfileCard() {
     const fetchStudent = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:3000/student/getstudent", {
+        const response = await fetch("https://shiksha-darpan.onrender.com/student/getstudent", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

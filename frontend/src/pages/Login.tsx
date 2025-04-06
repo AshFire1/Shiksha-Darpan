@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/auth/login", {
+      const res = await axios.post("https://shiksha-darpan.onrender.com/auth/login", {
         username,
         password,
       });

@@ -3,6 +3,7 @@ import AuthCard from "../components/ui/AuthCard";
 import App from "../components/ai/chat_bot.jsx"; // Chatbot component
 import { useEffect, useState } from "react";
 import ProfileCard from "@/components/ui/ProfileCard.js";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,6 +12,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   }, []);
+  const navigate=useNavigate();
   return (
     <div className="relative min-h-screen min-w-screen w-full bg-[#34265B] text-white flex flex-col overflow-x-hidden">
       {/* Background Blobs */}
@@ -24,7 +26,15 @@ const Home = () => {
           <li className="cursor-pointer hover:text-blue-300">Learning</li>
           <li className="cursor-pointer hover:text-blue-300">Scholarships</li>
           <li className="cursor-pointer hover:text-blue-300">Search</li>
-          <li className="cursor-pointer hover:text-blue-300">My Progress</li>
+          <li className="cursor-pointer hover:text-blue-300" onClick={
+            ()=>{
+              if(isLoggedIn){
+                navigate("/student")
+              }else {
+                navigate("/login")
+              }
+            }
+          }>My Progress</li>
           <li className="cursor-pointer hover:text-blue-300">Profile</li>
         </ul>
       </nav>

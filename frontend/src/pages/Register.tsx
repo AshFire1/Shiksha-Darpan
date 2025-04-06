@@ -19,7 +19,7 @@ const Register = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3000/auth/signup", {
+      const res = await axios.post("https://shiksha-darpan.onrender.com/auth/signup", {
         username,
         password,
         name,
