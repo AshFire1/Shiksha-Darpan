@@ -1,8 +1,15 @@
 import { Feed } from "../components/ui/Feed";
 import AuthCard from "../components/ui/AuthCard";
 import App from "../components/ai/chat_bot.jsx"; // Chatbot component
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
   return (
     <div className="relative min-h-screen min-w-screen w-full bg-[#34265B] text-white flex flex-col overflow-x-hidden">
       {/* Background Blobs */}
@@ -29,11 +36,17 @@ const Home = () => {
           <Feed />
         </div>
 
-        {/* Auth Card */}
+        {/* Auth Card
         <div className="w-full md:w-1/3 bg-[#1e1933] p-6 rounded-2xl flex items-center justify-center shadow-xl">
           <AuthCard />
-        </div>
-      </div>
+        </div>*/}
+        {isLoggedIn ? (<h1>Aloo</h1>): (
+          <div className="w-full md:w-1/3 bg-[#1e1933] p-6 rounded-2xl flex items-center justify-center shadow-xl">
+            <AuthCard />
+          </div>
+        )}
+        
+      </div> 
 
       {/* Chatbot App - fixed to bottom left */}
       <div className="z-50">
