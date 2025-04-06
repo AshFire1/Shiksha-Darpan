@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/auth/mainAuth.ts","./src/auth/routes.ts","./src/utils/zodschemas.ts"],"version":"5.7.3"}
+{"root":["./src/index.ts","./src/auth/mainAuth.ts","./src/auth/routes.ts","./src/student/routes.ts","./src/utils/jwt_verify.ts","./src/utils/zodschemas.ts"],"version":"5.7.3"}

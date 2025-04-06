@@ -2,6 +2,7 @@ import { Feed } from "../components/ui/Feed";
 import AuthCard from "../components/ui/AuthCard";
 import App from "../components/ai/chat_bot.jsx"; // Chatbot component
 import { useEffect, useState } from "react";
+import ProfileCard from "@/components/ui/ProfileCard.js";
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,7 +41,7 @@ const Home = () => {
         <div className="w-full md:w-1/3 bg-[#1e1933] p-6 rounded-2xl flex items-center justify-center shadow-xl">
           <AuthCard />
         </div>*/}
-        {isLoggedIn ? (<h1>Aloo</h1>): (
+        {isLoggedIn ? (<ProfileCard/>): (
           <div className="w-full md:w-1/3 bg-[#1e1933] p-6 rounded-2xl flex items-center justify-center shadow-xl">
             <AuthCard />
           </div>
