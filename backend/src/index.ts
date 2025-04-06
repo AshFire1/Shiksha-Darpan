@@ -10,30 +10,27 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const allowedOrigins = ["http://localhost:5173", "https://shiksha-darpan.vercel.app"];
-
-const corsOptions: cors.CorsOptions = {
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+// ✅ Correct CORS config
+const corsOptions = {
+  origin: ["http://localhost:5173", "https://shiksha-darpan.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
+  credentials: true
 };
 
+// ✅ Apply CORS
 app.use(cors(corsOptions));
 
+// ✅ Allow preflight
 app.options("*", cors(corsOptions));
 
+// JSON body parser
 app.use(express.json());
 
+// Routes
 app.use("/auth", authRouter);
 app.use("/student", studentRouter);
 
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
