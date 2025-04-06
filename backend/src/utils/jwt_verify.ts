@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+require("dotenv").config();
+
 declare module "express-serve-static-core" {
     interface Request {
       user?: any; // or a specific type if you know the JWT payload structure
@@ -8,6 +10,7 @@ declare module "express-serve-static-core" {
   
 
 const SECRET_KEY = process.env.JWT_SECRET || "your_secret_key";
+
 
 export default function jwt_verify(req: Request, res: Response, next: NextFunction): void {
   const authHeader = req.headers.authorization;
@@ -24,6 +27,7 @@ export default function jwt_verify(req: Request, res: Response, next: NextFuncti
     req.user = decoded; 
     next();
   } catch (err) {
+    console.log("Error in jwt_verify : ",err);
     res.status(403).json({ error: "Invalid or expired token" });
   }
 }
