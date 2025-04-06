@@ -59,7 +59,7 @@ const App = () => {
     setInput('');
 
     try {
-      const res = await axios.post('http://localhost:5000/chat', { message: input });
+      const res = await axios.post('http://localhost:8000/chat', { message: input });
       const botReply = res.data.reply;
       setMessages([...newMessages, { text: botReply, sender: 'bot' }]);
     } catch (error) {
