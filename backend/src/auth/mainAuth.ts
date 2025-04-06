@@ -24,15 +24,9 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
         },
       });
   
-      const token = jwt.sign(
-        { id: newStudent.id, username: newStudent.username },
-        process.env.JWT_SECRET as string,
-        { expiresIn: "365d" }
-      );
   
       res.status(201).json({
         message: "User created successfully",
-        token,
         student: { id: newStudent.id, username: newStudent.username, name: newStudent.name },
       });
     } catch (error) {
