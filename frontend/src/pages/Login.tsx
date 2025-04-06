@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState(""); // same as backend 'username'
@@ -79,9 +79,9 @@ const Login = () => {
 
         <p className="mt-4 text-center text-sm text-black">
           Don’t have an account?{" "}
-          <a href="/register" className="underline">
+          <Link to="/register" className="underline">
             Register
-          </a>
+          </Link>
         </p>
       </form>
     </div>
