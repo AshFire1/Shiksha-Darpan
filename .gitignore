@@ -1,4 +1,4 @@
 ./backend/.env
 ./server/node_modules/
 ./server/.env
-./backend/dist
+./backend/dist/
